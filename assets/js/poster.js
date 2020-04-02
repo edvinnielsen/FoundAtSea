@@ -1,0 +1,3 @@
+class Poster {
+  constructor() {}
+}

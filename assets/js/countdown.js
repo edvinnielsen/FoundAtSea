@@ -1,0 +1,3 @@
+class Count {
+  constructor() {}
+}

@@ -1,0 +1,3 @@
+class Mine {
+  constructor() {}
+}
