@@ -17,5 +17,4 @@ class Control {
     };
     this._image.src = this._imageLocation;
   }
-
 }

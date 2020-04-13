@@ -1,5 +1,5 @@
 class Book {
-  x = 1920 - 160*6 - 50;
+  x = 1920 - 160 * 6 - 50;
   y = 0;
 
   _currentPage = 0;

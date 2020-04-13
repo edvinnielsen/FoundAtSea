@@ -5,15 +5,12 @@ const book1 = new Book();
 
 const back = new Control();
 
-book1.tick();
+const button = new Button();
 
 function onClick(event) {
-    console.log("click");
-
-    // if (area) ?
-
-    book1.switchPageUp();
-    book1.tick();
+  console.log('click');
+  book1.switchPageUp();
+  book1.tick();
 }
 
 document.addEventListener('click', onClick);
