@@ -1,3 +1,0 @@
-class Life {
-  constructor() {}
-}

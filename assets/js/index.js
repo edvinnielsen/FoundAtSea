@@ -3,6 +3,8 @@ const ctx = canvas.getContext('2d');
 
 const book1 = new Book();
 
+const back = new Control();
+
 book1.tick();
 
 function onClick(event) {
