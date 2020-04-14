@@ -5,7 +5,7 @@ class Button {
   //  rest - 0
   // hover - 1
   // press - 2
-  _press = 1;
+  _press = 0;
 
   _image;
   _imageLocation = './assets/img/button.png';
@@ -48,10 +48,24 @@ class Button {
     );
   }
 
+  stateRest = () => {
+    console.log('state rest run');
+    this._press = 0;
+  };
+
+  // stateHover = () => {
+  //   console.log('state hover run');
+  //   this._press = 1;
+  // };
+
+  stateClick = () => {
+    console.log('state click run');
+    this._press = 2;
+  };
+
   tick() {
-    // console.log("book: tick")
     this._draw();
+
+
   }
-
-
 }

@@ -3,7 +3,7 @@ class Book {
   y = 0;
 
   _currentPage = 0;
-  _pageCount = 3;
+  _pageCount = 2;
 
   _image;
   _imageLocation = './assets/img/book.png';
@@ -53,11 +53,19 @@ class Book {
   }
 
   switchPageUp() {
-    // console.log('switch');
-    this._currentPage++;
-    if (this._currentPage % this._pageCount == 0) {
-      this._currentPage = 0;
+    console.log('switch');
+    if (this._currentPage + 1 <= this._pageCount) {
+      this._currentPage++;
     }
-    // console.log(this._currentPage)
+    console.log(this._currentPage);
+  }
+
+  switchPageDown() {
+
+    if (this._currentPage - 1 >= 0) {
+      console.log('switch');
+      this._currentPage--;
+    }
+    console.log(this._currentPage);
   }
 }
