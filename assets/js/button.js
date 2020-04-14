@@ -13,14 +13,10 @@ class Button {
   _spriteHeight = 192;
 
   constructor() {
-    console.log('button: constructor');
-
     this._loadImage();
   }
 
   _loadImage() {
-    console.log('button: _loadImage');
-
     this._image = new Image();
 
     this._image.onload = () => {
@@ -30,7 +26,6 @@ class Button {
     this._image.src = this._imageLocation;
   }
   _draw() {
-    // console.log('book: _draw');
 
     const _sourceY = this._spriteHeight * this._press;
 
@@ -49,7 +44,6 @@ class Button {
   }
 
   stateRest = () => {
-    console.log('state rest run');
     this._press = 0;
   };
 
@@ -59,7 +53,6 @@ class Button {
   // };
 
   stateClick = () => {
-    console.log('state click run');
     this._press = 2;
   };
 

@@ -1,7 +1,11 @@
 .game {
     border: 1px solid #ccc;
     background-color: #fff;
-    
+
+}
+
+.map {
+    border: 1px solid #ccc;
 }
 
 body {

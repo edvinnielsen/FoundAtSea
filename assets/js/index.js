@@ -10,7 +10,6 @@ const light = new Light();
 document.addEventListener('mousedown', mouseDown);
 
 function mouseDown(event) {
-  console.log('click');
   console.log(event);
 
   const x = event.x;
@@ -42,6 +41,7 @@ function mouseUp(event) {
   button.tick();
 }
 
+// document.addEventListener('mousemove', mouseMove);
 // function mouseMove(event) {
 //   console.log(event.x, event.y);
 
@@ -58,9 +58,12 @@ function mouseUp(event) {
   // }
 // }
 
-// document.addEventListener('mousemove', mouseMove);
+
 
 
 // document.addEventListener('mousemove', (event) =>
 //   console.log(event.x, event.y)
 // );
+
+
+

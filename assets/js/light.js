@@ -13,14 +13,10 @@ class Light {
   _spriteHeight = 120;
 
   constructor() {
-    console.log('light: constructor');
-
     this._loadImage();
   }
 
   _loadImage() {
-    console.log('light: _loadImage');
-
     this._image = new Image();
 
     this._image.onload = () => {
@@ -30,8 +26,6 @@ class Light {
     this._image.src = this._imageLocation;
   }
   _draw() {
-    console.log('light: _draw');
-
     const _sourceY = this._spriteHeight * this._state;
 
     ctx.beginPath();
@@ -49,7 +43,6 @@ class Light {
   }
 
   tick() {
-    // console.log("book: tick")
     this._draw();
   }
 }
