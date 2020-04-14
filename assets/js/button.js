@@ -2,7 +2,10 @@ class Button {
   x = 660;
   y = 318;
 
-  _press = 0;
+  //  rest - 0
+  // hover - 1
+  // press - 2
+  _press = 1;
 
   _image;
   _imageLocation = './assets/img/button.png';
