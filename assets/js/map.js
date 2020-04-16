@@ -11,11 +11,16 @@ class Map {
   _draw() {
     this.ctx.beginPath();
 
-    for (let y = 0; y < this.canvas.width*3; y += 80) {
+    for (let y = 0; y < this.canvas.width; y += 80) {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
       // y to text
-      
+      // this.ctx.font = '220px Glasstown NBP';
+      // this.ctx.fillText(
+      //   this.y,
+      //   (this.canvas.width + 10) / 2,
+      //   (this.canvas.height + 110) / 2
+      // );
     }
 
     this.ctx.lineWidth = 6;
@@ -24,7 +29,7 @@ class Map {
   }
 
   tick() {
-    console.log("map: ticked");
+    console.log('map: ticked');
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.ctx.translate(-10, 0);
     this._draw();
