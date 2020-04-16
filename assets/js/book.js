@@ -1,6 +1,9 @@
 class Book {
-  x = 1920 - 160 * 6 - 50;
-  y = 0;
+  // x = 1920 - 160 * 6 - 50;
+  // y = 0;
+
+  canvas;
+  ctx;
 
   _currentPage = 0;
   _pageCount = 2;
@@ -13,6 +16,8 @@ class Book {
 
   constructor() {
     // console.log('book: constructor');
+    this.canvas = document.querySelector('.booklet');
+    this.ctx = this.canvas.getContext('2d');
 
     this._loadImage();
   }
@@ -33,15 +38,15 @@ class Book {
 
     const _sourceY = this._spriteHeight * this._currentPage;
 
-    ctx.beginPath();
-    ctx.drawImage(
+    this.ctx.beginPath();
+    this.ctx.drawImage(
       this._image,
       this._sourceX,
       _sourceY,
       this._spriteWidth,
       this._spriteHeight,
-      this.x,
-      this.y,
+      0,
+      0,
       this._spriteWidth,
       this._spriteHeight
     );

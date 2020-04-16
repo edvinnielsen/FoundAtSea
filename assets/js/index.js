@@ -1,10 +1,11 @@
-const canvas = document.querySelector('.game');
-const ctx = canvas.getContext('2d');
+// const canvas = document.querySelector('.game');
+// const ctx = canvas.getContext('2d');
 
-const book1 = new Book();
-const back = new Control();
+// const back = new Control();
+const book = new Book();
 const button = new Button();
 const light = new Light();
+const counter = new Count();
 
 
 document.addEventListener('mousedown', mouseDown);
@@ -17,20 +18,25 @@ function mouseDown(event) {
 
   //Click on left page of book
   if (x > 925 && x < 1400 && y > 128 && y < 490) {
-    book1.switchPageDown();
-    book1.tick();
+    book.switchPageDown();
+    book.tick();
   }
 
   //Click on right page of book
   if (x > 1400 && x < 1875 && y > 128 && y < 490) {
-    book1.switchPageUp();
-    book1.tick();
+    book.switchPageUp();
+    book.tick();
   }
 
   //Click on button
   if (y > 375 && y < 470 && x > 700 && x < 835) {
     button.stateClick();
     button.tick();
+    if (counter.torpedos > 0)
+    {
+      counter.torpedos--;
+      counter.tick();
+    }
   }
 }
 

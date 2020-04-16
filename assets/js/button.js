@@ -1,11 +1,13 @@
 class Button {
-  x = 660;
-  y = 318;
+  _press = 0;
+  canvas;
+  ctx;
+  // x = 660;
+  // y = 318;
 
   //  rest - 0
   // hover - 1
   // press - 2
-  _press = 0;
 
   _image;
   _imageLocation = './assets/img/button.png';
@@ -13,6 +15,8 @@ class Button {
   _spriteHeight = 192;
 
   constructor() {
+    this.canvas = document.querySelector('.button');
+    this.ctx = this.canvas.getContext('2d');
     this._loadImage();
   }
 
@@ -26,18 +30,17 @@ class Button {
     this._image.src = this._imageLocation;
   }
   _draw() {
-
     const _sourceY = this._spriteHeight * this._press;
 
-    ctx.beginPath();
-    ctx.drawImage(
+    this.ctx.beginPath();
+    this.ctx.drawImage(
       this._image,
       0,
       _sourceY,
       this._spriteWidth,
       this._spriteHeight,
-      this.x,
-      this.y,
+      -8,
+      -10,
       this._spriteWidth,
       this._spriteHeight
     );
@@ -58,7 +61,5 @@ class Button {
 
   tick() {
     this._draw();
-
-
   }
 }

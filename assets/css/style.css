@@ -1,11 +1,37 @@
-.game {
+/* .game {
     border: 1px solid #ccc;
     background-color: #fff;
 
+} */
+
+.display {
+    border: 1px solid #ccc;
+    position: absolute; left: 0; top: 0;
+}
+
+.count {
+    border: 1px solid #ccc;
+    position: absolute; left: 675px; top: 110px;
+}
+
+.button {
+    border: 1px solid #ccc;
+    position: absolute; left: 675px; top: 335px;
+}
+
+.booklet {
+    border: 1px solid #ccc;
+    position: absolute; left: 910px; top: 30px;
+}
+
+.light {
+    border: 1px solid #ccc;
+    position: absolute; left: 444px; top: 426px;
 }
 
 .map {
     border: 1px solid #ccc;
+    position: absolute; left: 220px; top:  615px;
 }
 
 body {
