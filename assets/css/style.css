@@ -1,39 +1,53 @@
-/* .game {
-    border: 1px solid #ccc;
-    background-color: #fff;
+#dash {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
 
-} */
+#sub {
+  position: absolute;
+  left: 200px;
+  top: 470px;
+}
 
 .display {
-    border: 1px solid #ccc;
-    position: absolute; left: 0; top: 0;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 110px;
+  top: 100px;
 }
 
 .count {
-    border: 1px solid #ccc;
-    position: absolute; left: 675px; top: 110px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 675px;
+  top: 110px;
 }
 
 .button {
-    border: 1px solid #ccc;
-    position: absolute; left: 675px; top: 335px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 675px;
+  top: 335px;
 }
 
 .booklet {
-    border: 1px solid #ccc;
-    position: absolute; left: 910px; top: 30px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 910px;
+  top: 30px;
 }
 
 .light {
-    border: 1px solid #ccc;
-    position: absolute; left: 444px; top: 426px;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 444px;
+  top: 426px;
 }
 
 .map {
-    border: 1px solid #ccc;
-    position: absolute; left: 220px; top:  615px;
-}
-
-body {
-    background-color: #ccc;
+  border: 1px solid #ccc;
+  position: absolute;
+  left: 220px;
+  top: 615px;
 }

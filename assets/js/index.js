@@ -1,11 +1,17 @@
-// const canvas = document.querySelector('.game');
-// const ctx = canvas.getContext('2d');
-
-// const back = new Control();
 const book = new Book();
 const button = new Button();
 const light = new Light();
 const counter = new Count();
+const map = new Map();
+
+function moveMap() {
+  console.log("map: ticked");
+    map.ctx.clearRect(0, 0, map.canvas.width, map.canvas.height);
+    map.ctx.translate(-10, 0);
+    map._draw();
+}
+
+setInterval(moveMap, 2000);
 
 
 document.addEventListener('mousedown', mouseDown);
@@ -32,8 +38,7 @@ function mouseDown(event) {
   if (y > 375 && y < 470 && x > 700 && x < 835) {
     button.stateClick();
     button.tick();
-    if (counter.torpedos > 0)
-    {
+    if (counter.torpedos > 0) {
       counter.torpedos--;
       counter.tick();
     }
@@ -61,15 +66,9 @@ function mouseUp(event) {
 //   // } else {
 //   //   button.stateRest();
 //   //   button.tick();
-  // }
 // }
-
-
-
+// }
 
 // document.addEventListener('mousemove', (event) =>
 //   console.log(event.x, event.y)
 // );
-
-
-

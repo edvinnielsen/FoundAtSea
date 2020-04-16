@@ -1,13 +1,10 @@
 class Light {
-  // x = 444;
-  // y = 426;
-
-  //off - 0
-  // on - 1
-
   canvas;
   ctx;
 
+  //off - 0
+  // on - 1
+  
   _state = 0;
 
   _image;

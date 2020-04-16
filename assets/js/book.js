@@ -1,7 +1,4 @@
 class Book {
-  // x = 1920 - 160 * 6 - 50;
-  // y = 0;
-
   canvas;
   ctx;
 
@@ -15,7 +12,6 @@ class Book {
   _sourceX = 0;
 
   constructor() {
-    // console.log('book: constructor');
     this.canvas = document.querySelector('.booklet');
     this.ctx = this.canvas.getContext('2d');
 
@@ -23,8 +19,6 @@ class Book {
   }
 
   _loadImage() {
-    // console.log('book: _loadImage');
-
     this._image = new Image();
 
     this._image.onload = () => {
@@ -34,8 +28,6 @@ class Book {
     this._image.src = this._imageLocation;
   }
   _draw() {
-    // console.log('book: _draw');
-
     const _sourceY = this._spriteHeight * this._currentPage;
 
     this.ctx.beginPath();
@@ -53,7 +45,6 @@ class Book {
   }
 
   tick() {
-    // console.log("book: tick")
     this._draw();
   }
 
