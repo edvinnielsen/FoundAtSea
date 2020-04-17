@@ -1,10 +1,10 @@
-#dash {
+.dash {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-#sub {
+.sub {
   position: absolute;
   left: 200px;
   top: 468px;

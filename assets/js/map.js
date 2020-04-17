@@ -11,16 +11,15 @@ class Map {
   _draw() {
     this.ctx.beginPath();
 
-    for (let y = 0; y < this.canvas.width; y += 80) {
+    for (let y = 0; y < this.canvas.width*2; y += 80) {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
+
       // y to text
-      // this.ctx.font = '220px Glasstown NBP';
-      // this.ctx.fillText(
-      //   this.y,
-      //   (this.canvas.width + 10) / 2,
-      //   (this.canvas.height + 110) / 2
-      // );
+      this.ctx.font = '50px Glasstown NBP';
+      this.ctx.fillStyle = '#c40000';
+      this.ctx.textAlign = 'center';
+      this.ctx.fillText(y / 80, y, 360);
     }
 
     this.ctx.lineWidth = 6;
