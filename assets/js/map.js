@@ -12,6 +12,7 @@ class Map {
     this.ctx.beginPath();
 
     for (let y = 0; y < this.canvas.width*2; y += 80) {
+      console.log(y);
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
 

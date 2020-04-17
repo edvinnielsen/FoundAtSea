@@ -4,15 +4,24 @@ const light = new Light();
 const counter = new Count();
 const map = new Map();
 
+var i = 0;
+
 function moveMap() {
-  console.log("map: ticked");
-    map.ctx.clearRect(0, 0, map.canvas.width, map.canvas.height);
-    map.ctx.translate(-10, 0);
-    map._draw();
+  console.log('map: ticked');
+  map.ctx.clearRect(0, 0, map.canvas.width, map.canvas.height);
+  map.ctx.translate(-10, 0);
+  map._draw();
+
+
+  // i++;
+  // console.log(i);
+  // if (i == 7) {
+  //   i = 0;
+  //   map.tick();
+  // }
 }
 
 setInterval(moveMap, 2000);
-
 
 document.addEventListener('mousedown', mouseDown);
 
