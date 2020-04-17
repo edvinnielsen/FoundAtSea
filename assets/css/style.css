@@ -7,29 +7,29 @@
 #sub {
   position: absolute;
   left: 200px;
-  top: 470px;
+  top: 468px;
   z-index: 1;
 }
 
 .display {
   border: 1px solid #ccc;
   position: absolute;
-  left: 110px;
+  left: 100px;
   top: 100px;
 }
 
 .count {
   border: 1px solid #ccc;
   position: absolute;
-  left: 675px;
-  top: 110px;
+  left: 665px;
+  top: 100px;
 }
 
 .button {
   border: 1px solid #ccc;
   position: absolute;
-  left: 675px;
-  top: 335px;
+  left: 667px;
+  top: 328px;
 }
 
 .booklet {
@@ -49,6 +49,6 @@
 .map {
   border: 1px solid #ccc;
   position: absolute;
-  left: 220px;
-  top: 615px;
+  left: 210px;
+  top: 605px;
 }
