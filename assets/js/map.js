@@ -13,14 +13,13 @@ class Map {
   _draw() {
     this.ctx.beginPath();
 
-    for (let y = 0; y < this.canvas.width; y += 80) {
-      console.log(y);
+    for (let y = 0; y < this.canvas.width; y += 70) {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
       this.ctx.font = '50px Glasstown NBP';
       this.ctx.fillStyle = '#c40000';
       this.ctx.textAlign = 'center';
-      this.ctx.fillText(y / 80, y, 360);
+      this.ctx.fillText((y / 70) + 43, y, 360);
     }
 
     this.ctx.lineWidth = 6;
@@ -29,7 +28,6 @@ class Map {
   }
 
   tick() {
-    console.log('map: ticked');
     this.left -= 10;
     this.canvas.style.marginLeft = `${this.left}px`;
     setTimeout(() => {this.tick()}, 2000) 
