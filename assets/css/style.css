@@ -1,3 +1,9 @@
+
+/* TODO: Remove this. */
+canvas {
+  border: 1px solid #ccc;
+}
+
 .dash {
   position: absolute;
   left: 0;
@@ -12,43 +18,41 @@
 }
 
 .display {
-  border: 1px solid #ccc;
   position: absolute;
   left: 100px;
   top: 100px;
 }
 
 .count {
-  border: 1px solid #ccc;
   position: absolute;
   left: 665px;
   top: 100px;
 }
 
 .button {
-  border: 1px solid #ccc;
   position: absolute;
   left: 667px;
   top: 328px;
 }
 
 .booklet {
-  border: 1px solid #ccc;
   position: absolute;
   left: 910px;
   top: 30px;
 }
 
 .light {
-  border: 1px solid #ccc;
   position: absolute;
   left: 444px;
   top: 426px;
 }
 
-.map {
-  border: 1px solid #ccc;
+.mapwrapper {
   position: absolute;
   left: 210px;
   top: 605px;
+  overflow: hidden;
+  width: 1605px;
 }
+
+

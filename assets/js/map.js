@@ -1,22 +1,22 @@
 class Map {
   canvas;
   ctx;
+  left = 0;
 
   constructor() {
     this.canvas = document.querySelector('.map');
     this.ctx = this.canvas.getContext('2d');
     this._draw();
+    this.tick();
   }
 
   _draw() {
     this.ctx.beginPath();
 
-    for (let y = 0; y < this.canvas.width*2; y += 80) {
+    for (let y = 0; y < this.canvas.width; y += 80) {
       console.log(y);
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
-
-      // y to text
       this.ctx.font = '50px Glasstown NBP';
       this.ctx.fillStyle = '#c40000';
       this.ctx.textAlign = 'center';
@@ -30,8 +30,8 @@ class Map {
 
   tick() {
     console.log('map: ticked');
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.translate(-10, 0);
-    this._draw();
+    this.left -= 10;
+    this.canvas.style.marginLeft = `${this.left}px`;
+    setTimeout(() => {this.tick()}, 2000) 
   }
 }
