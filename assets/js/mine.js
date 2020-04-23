@@ -26,29 +26,36 @@ class Mine {
 
     if (isMine) {
       this.armMine();
+
+      let fsm = new StateMachine({
+        init: 'hidden',
+        transitions: [
+          { name: 'mark',     from: 'hidden', to: 'marked'  },
+          { name: 'unmark',   from: 'marked', to: 'hidden'  },
+          { name: 'shot',      from: 'marked', to: 'exploded'},
+        ],
+        methods: {
+          onMark:   function() { console.log('I am marked')   },
+          onUnMark: function() { console.log('I am unmarked') },
+          onShot:   function() { console.log('I am hit')      },
+        }
+      });
+    } else {
+
+      let fsm = new StateMachine({
+        init: 'hidden',
+        transitions: [
+          { name: 'mark',     from: 'hidden', to: 'marked'  },
+          { name: 'unmark',   from: 'marked', to: 'hidden'  },
+          { name: 'shot',     from: 'marked', to: 'missed'  }
+        ],
+        methods: {
+          onMark:   function() { console.log('I am marked')   },
+          onUnMark: function() { console.log('I am unmarked') },
+          onShot:   function() { console.log('I am missed')   }
+        }
+      });
     }
-
-    let fsm = new StateMachine({
-      init: 'solid',
-      transitions: [
-        { name: 'melt',     from: 'solid',  to: 'liquid' },
-        { name: 'freeze',   from: 'liquid', to: 'solid'  },
-        { name: 'vaporize', from: 'liquid', to: 'gas'    },
-        { name: 'condense', from: 'gas',    to: 'liquid' }
-      ],
-      methods: {
-        onMelt:     function() { console.log('I melted')    },
-        onFreeze:   function() { console.log('I froze')     },
-        onVaporize: function() { console.log('I vaporized') },
-        onCondense: function() { console.log('I condensed') }
-      }
-    });
-    
-    console.log("hiu");
-
-
-
-
   }
 
   armMine() {

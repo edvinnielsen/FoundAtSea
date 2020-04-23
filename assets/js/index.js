@@ -10,6 +10,9 @@ const map = new Map();
 
 
 const mine1 = new Mine(6, 61, true);
+
+console.log(mine1.state);
+
 const mine2 = new Mine(8, 60, false);
 const mine3 = new Mine(13, 59, false);
 
