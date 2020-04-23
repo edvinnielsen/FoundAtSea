@@ -36,6 +36,8 @@ class Map {
   tick() {
     this.left -= 10;
     this.canvas.style.marginLeft = `${this.left}px`;
-    setTimeout(() => {this.tick();}, mapSpeed);
+    setTimeout(() => {
+      this.tick();
+    }, mapSpeed);
   }
 }

@@ -57,11 +57,13 @@ class Mine {
     }
   }
 
-  tick() {
-    this.left -= 10;
-    this.canvas.style.marginLeft = `${this.left}px`;
-    setTimeout(() => {this.tick();}, mapSpeed);
-  }
+  
+
+  // tick() {
+  //   this.left -= 10;
+  //   this.canvas.style.marginLeft = `${this.left}px`;
+  //   setTimeout(() => {this.tick();}, mapSpeed);
+  // }
 
 
   

@@ -6,7 +6,7 @@ const light = new Light();
 const counter = new Count();
 const map = new Map();
 
-
+const mines = [];
 
 const mine1 = new Mine(6, 61, true);
 
@@ -16,7 +16,10 @@ mine1.mark();
 //press fire-button
 mine1.shot();
 
-
+//win-condition?
+if (mine1.isMine && mine1.x < 200) {
+  console.log("You lost!");
+}
 
 const mine2 = new Mine(8, 60, false);
 console.log(mine2.state);
@@ -26,14 +29,23 @@ mine2.shot();
 
 const mine3 = new Mine(13, 59, false);
 
+mines.push(mine1, mine2, mine3);
 
-document.addEventListener('mousedown', mouseDown);
+document.addEventListener("click", mouseDown);
 
 function mouseDown(event) {
   console.log(event);
 
-  const x = event.x;
-  const y = event.y;
+  const x = event.offsetX;
+  const y = event.offsetY;
+
+  // loop through all mines to see if the x,y is touching the mine's x,y
+  // for (let i = 0; i < mines.length; i++) {
+  //   const mine = mines[i];
+
+  //   mine.isTouching(x, y, )
+
+  // }
 
   //Click on left page of book
   if (x > 925 && x < 1400 && y > 128 && y < 490) {
@@ -58,7 +70,7 @@ function mouseDown(event) {
   }
 }
 
-document.addEventListener('mouseup', mouseUp);
+document.addEventListener("mouseup", mouseUp);
 
 function mouseUp(event) {
   button.stateRest();
