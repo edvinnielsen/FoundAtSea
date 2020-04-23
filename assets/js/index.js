@@ -9,14 +9,9 @@ const counter = new Count();
 const map = new Map();
 
 
-const mine1 = new Mine(-10 + 70*6, 90, true);
-const mine2 = new Mine(-10 + 70*8, 90+60*1, false);
-const mine3 = new Mine(-10 + 70*13, 90+60*2, false);
-
-
-
-
-
+const mine1 = new Mine(6, 61, true);
+const mine2 = new Mine(8, 60, false);
+const mine3 = new Mine(13, 59, false);
 
 
 document.addEventListener('mousedown', mouseDown);

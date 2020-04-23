@@ -16,6 +16,10 @@ class Mine {
     this.canvas = document.querySelector(".map");
     this.ctx = this.canvas.getContext("2d");
 
+    //translate coord
+    row = -10 + 70*row;
+    column = 90 + 60 * (-1*(-61 + column));
+
     this.ctx.beginPath();
     this.ctx.rect(row, column, 20, 20);
     this.ctx.stroke();
