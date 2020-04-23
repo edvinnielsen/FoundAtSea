@@ -1,6 +1,6 @@
 
 
-let mapSpeed = 2000;
+let mapSpeed = 5000;
 
 const book = new Book();
 const button = new Button();
