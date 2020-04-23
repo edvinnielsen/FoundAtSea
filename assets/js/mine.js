@@ -26,23 +26,22 @@ class Mine {
 
     if (isMine) {
       this.armMine();
-
-      let fsm = new StateMachine({
+      StateMachine.apply(this, {
         init: 'hidden',
         transitions: [
           { name: 'mark',     from: 'hidden', to: 'marked'  },
           { name: 'unmark',   from: 'marked', to: 'hidden'  },
-          { name: 'shot',      from: 'marked', to: 'exploded'},
+          { name: 'shot',     from: 'marked', to: 'exploded'},
         ],
         methods: {
           onMark:   function() { console.log('I am marked')   },
-          onUnMark: function() { console.log('I am unmarked') },
+          onUnmark: function() { console.log('I am unmarked') },
           onShot:   function() { console.log('I am hit')      },
         }
       });
+      
     } else {
-
-      let fsm = new StateMachine({
+      StateMachine.apply(this, {
         init: 'hidden',
         transitions: [
           { name: 'mark',     from: 'hidden', to: 'marked'  },
@@ -51,7 +50,7 @@ class Mine {
         ],
         methods: {
           onMark:   function() { console.log('I am marked')   },
-          onUnMark: function() { console.log('I am unmarked') },
+          onUnmark: function() { console.log('I am unmarked') },
           onShot:   function() { console.log('I am missed')   }
         }
       });
@@ -59,7 +58,7 @@ class Mine {
   }
 
   armMine() {
-    console.log("mine is armed");
+    // console.log("mine is armed");
   }
 
   tick() {

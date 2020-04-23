@@ -1,6 +1,4 @@
-
-
-let mapSpeed = 5000;
+let mapSpeed = 3000;
 
 const book = new Book();
 const button = new Button();
@@ -8,12 +6,19 @@ const light = new Light();
 const counter = new Count();
 const map = new Map();
 
-
 const mine1 = new Mine(6, 61, true);
 
 console.log(mine1.state);
+mine1.mark();
+console.log(mine1.state);
+mine1.shot();
 
 const mine2 = new Mine(8, 60, false);
+console.log(mine2.state);
+mine2.mark();
+console.log(mine2.state);
+mine2.shot();
+
 const mine3 = new Mine(13, 59, false);
 
 
