@@ -25,7 +25,6 @@ class Mine {
     this.ctx.stroke();
 
     if (isMine) {
-      this.armMine();
       StateMachine.apply(this, {
         init: 'hidden',
         transitions: [
@@ -56,11 +55,7 @@ class Mine {
       });
     }
   }
-
-  armMine() {
-    // console.log("mine is armed");
-  }
-
+  
   tick() {
     this.left -= 10;
     this.canvas.style.marginLeft = `${this.left}px`;
