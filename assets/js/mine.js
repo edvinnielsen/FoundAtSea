@@ -22,6 +22,7 @@ class Mine {
 
     this.ctx.beginPath();
     this.ctx.rect(row, column, 20, 20);
+    this.ctx.strokeStyle = "red";
     this.ctx.stroke();
 
     if (isMine) {
@@ -55,7 +56,7 @@ class Mine {
       });
     }
   }
-  
+
   tick() {
     this.left -= 10;
     this.canvas.style.marginLeft = `${this.left}px`;
