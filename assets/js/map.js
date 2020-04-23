@@ -19,7 +19,17 @@ class Map {
       this.ctx.font = '50px Glasstown NBP';
       this.ctx.fillStyle = '#c40000';
       this.ctx.textAlign = 'center';
-      this.ctx.fillText((y / 70) + 43, y, 360);
+      let i = y/70;
+
+      if (i <= 60) {
+        this.ctx.fillText(i, y, 360);
+      } else {
+        i = i - 60;
+        this.ctx.fillText(i, y, 360);
+      }
+
+      
+
     }
 
     this.ctx.lineWidth = 6;
