@@ -1,8 +1,23 @@
+
+
+let mapSpeed = 2000;
+
 const book = new Book();
 const button = new Button();
 const light = new Light();
 const counter = new Count();
 const map = new Map();
+
+
+const mine1 = new Mine(-10 + 70*6, 90, true);
+const mine2 = new Mine(-10 + 70*8, 90+60*1, false);
+const mine3 = new Mine(-10 + 70*13, 90+60*2, false);
+
+
+
+
+
+
 
 document.addEventListener('mousedown', mouseDown);
 
