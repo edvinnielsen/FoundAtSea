@@ -18,7 +18,7 @@ mine1.shot();
 
 //win-condition?
 if (mine1.isMine && mine1.x < 200) {
-  console.log("You lost!");
+  console.log('You lost!');
 }
 
 const mine2 = new Mine(8, 60, false);
@@ -31,13 +31,16 @@ const mine3 = new Mine(13, 59, false);
 
 mines.push(mine1, mine2, mine3);
 
-document.addEventListener("click", mouseDown);
+document.addEventListener('click', mouseDown);
 
 function mouseDown(event) {
   console.log(event);
 
-  const x = event.offsetX;
-  const y = event.offsetY;
+  //switch to
+  // const x = event.offsetX;
+  // const y = event.offsetY;
+  const x = event.x;
+  const y = event.y;
 
   // loop through all mines to see if the x,y is touching the mine's x,y
   // for (let i = 0; i < mines.length; i++) {
@@ -70,7 +73,7 @@ function mouseDown(event) {
   }
 }
 
-document.addEventListener("mouseup", mouseUp);
+document.addEventListener('mouseup', mouseUp);
 
 function mouseUp(event) {
   button.stateRest();
