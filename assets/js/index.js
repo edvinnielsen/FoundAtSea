@@ -2,6 +2,11 @@ let mapSpeed = 3000;
 
 const book = new Book();
 const button = new Button();
+document
+  .getElementById("button")
+  .addEventListener("mousedown", button.stateClick);
+document.getElementById("button").addEventListener("mouseup", button.stateRest);
+
 const light = new Light();
 const counter = new Count();
 const map = new Map();
@@ -18,7 +23,7 @@ mine1.shot();
 
 //win-condition?
 if (mine1.isMine && mine1.x < 200) {
-  console.log('You lost!');
+  console.log("You lost!");
 }
 
 const mine2 = new Mine(8, 60, false);
@@ -31,10 +36,10 @@ const mine3 = new Mine(13, 59, false);
 
 mines.push(mine1, mine2, mine3);
 
-document.addEventListener('click', mouseDown);
+document.getElementById("map").addEventListener("click", mapClick);
 
-function mouseDown(event) {
-  console.log(event);
+function mapClick(event) {
+  console.log(event.offsetX, event.offsetY);
 
   //switch to
   // const x = event.offsetX;
@@ -47,56 +52,19 @@ function mouseDown(event) {
   //   const mine = mines[i];
 
   //   mine.isTouching(x, y, )
+}
 
-  // }
+document.getElementById("booklet").addEventListener("click", bookClick);
 
-  //Click on left page of book
-  if (x > 925 && x < 1400 && y > 128 && y < 490) {
+function bookClick(event) {
+  const x = event.offsetX;
+  const y = event.offsetY;
+
+  if (x < 480) {
     book.switchPageDown();
     book.tick();
-  }
-
-  //Click on right page of book
-  if (x > 1400 && x < 1875 && y > 128 && y < 490) {
+  } else {
     book.switchPageUp();
     book.tick();
   }
-
-  //Click on button
-  if (y > 375 && y < 470 && x > 700 && x < 835) {
-    button.stateClick();
-    button.tick();
-    if (counter.torpedos > 0) {
-      counter.torpedos--;
-      counter.tick();
-    }
-  }
 }
-
-document.addEventListener('mouseup', mouseUp);
-
-function mouseUp(event) {
-  button.stateRest();
-  button.tick();
-}
-
-// document.addEventListener('mousemove', mouseMove);
-// function mouseMove(event) {
-//   console.log(event.x, event.y);
-
-//   const x = event.x;
-//   const y = event.y;
-
-//   //Hover on button
-//   if (y > 375 && y < 470 && x > 700 && x < 835) {
-//     button.stateHover();
-//     button.tick();
-//   // } else {
-//   //   button.stateRest();
-//   //   button.tick();
-// }
-// }
-
-// document.addEventListener('mousemove', (event) =>
-//   console.log(event.x, event.y)
-// );

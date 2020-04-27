@@ -3,19 +3,18 @@ class Button {
   ctx;
 
   //  rest - 0
-  // hover - 1
   // press - 2
 
   _press = 0;
 
   _image;
-  _imageLocation = './assets/img/button.png';
+  _imageLocation = "./assets/img/button.png";
   _spriteWidth = 192;
   _spriteHeight = 192;
 
   constructor() {
-    this.canvas = document.querySelector('.button');
-    this.ctx = this.canvas.getContext('2d');
+    this.canvas = document.querySelector(".button");
+    this.ctx = this.canvas.getContext("2d");
     this._loadImage();
   }
 
@@ -47,15 +46,16 @@ class Button {
 
   stateRest = () => {
     this._press = 0;
+    this.tick();
   };
-
-  // stateHover = () => {
-  //   console.log('state hover run');
-  //   this._press = 1;
-  // };
 
   stateClick = () => {
     this._press = 2;
+    this.tick();
+    if (counter.torpedos > 0) {
+      counter.torpedos--;
+      counter.tick();
+    }
   };
 
   tick() {
