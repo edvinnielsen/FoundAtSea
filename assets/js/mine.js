@@ -17,56 +17,60 @@ class Mine {
     this.ctx = this.canvas.getContext("2d");
 
     //translate coord
-    row = -10 + 70*row;
-    column = 90 + 60 * (-1*(-61 + column));
+    column = -10 + 70 * column;
+    row = 90 + 60 * (-1 * (-61 + row));
 
     this.ctx.beginPath();
-    this.ctx.rect(row, column, 20, 20);
+    this.ctx.rect(column, row, 20, 20);
     this.ctx.strokeStyle = "red";
     this.ctx.stroke();
 
     if (isMine) {
       StateMachine.apply(this, {
-        init: 'hidden',
+        init: "hidden",
         transitions: [
-          { name: 'mark',     from: 'hidden', to: 'marked'  },
-          { name: 'unmark',   from: 'marked', to: 'hidden'  },
-          { name: 'shot',     from: 'marked', to: 'exploded'},
+          { name: "mark", from: "hidden", to: "marked" },
+          { name: "unmark", from: "marked", to: "hidden" },
+          { name: "shot", from: "marked", to: "exploded" },
         ],
         methods: {
-          onMark:   function() { console.log('I am marked')   },
-          onUnmark: function() { console.log('I am unmarked') },
-          onShot:   function() { console.log('I am hit')      },
-        }
+          onMark: function () {
+            console.log("I am marked");
+          },
+          onUnmark: function () {
+            console.log("I am unmarked");
+          },
+          onShot: function () {
+            console.log("I am hit");
+          },
+        },
       });
-      
     } else {
       StateMachine.apply(this, {
-        init: 'hidden',
+        init: "hidden",
         transitions: [
-          { name: 'mark',     from: 'hidden', to: 'marked'  },
-          { name: 'unmark',   from: 'marked', to: 'hidden'  },
-          { name: 'shot',     from: 'marked', to: 'missed'  }
+          { name: "mark", from: "hidden", to: "marked" },
+          { name: "unmark", from: "marked", to: "hidden" },
+          { name: "shot", from: "marked", to: "missed" },
         ],
         methods: {
-          onMark:   function() { console.log('I am marked')   },
-          onUnmark: function() { console.log('I am unmarked') },
-          onShot:   function() { console.log('I am missed')   }
-        }
+          onMark: function () {
+            console.log("I am marked");
+          },
+          onUnmark: function () {
+            console.log("I am unmarked");
+          },
+          onShot: function () {
+            console.log("I am missed");
+          },
+        },
       });
     }
   }
-
-  
 
   // tick() {
   //   this.left -= 10;
   //   this.canvas.style.marginLeft = `${this.left}px`;
   //   setTimeout(() => {this.tick();}, mapSpeed);
   // }
-
-
-  
-
-
 }

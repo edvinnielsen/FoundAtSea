@@ -1,40 +1,49 @@
 let mapSpeed = 3000;
 
 const book = new Book();
+
 const button = new Button();
-document
-  .getElementById("button")
-  .addEventListener("mousedown", button.stateClick);
+document.getElementById("button").addEventListener("mousedown", () => {
+  button.stateClick();
+  counter.oneDown();
+});
 document.getElementById("button").addEventListener("mouseup", button.stateRest);
 
 const light = new Light();
+
 const counter = new Count();
+
 const map = new Map();
 
-const mines = [];
+function Create2DArray(rows) {
+  var arr = [];
 
-const mine1 = new Mine(6, 61, true);
+  for (var i = 0; i < rows; i++) {
+    arr[i] = [];
+  }
 
-//press coord on map
-mine1.mark();
-
-//press fire-button
-mine1.shot();
-
-//win-condition?
-if (mine1.isMine && mine1.x < 200) {
-  console.log("You lost!");
+  return arr;
 }
 
-const mine2 = new Mine(8, 60, false);
-console.log(mine2.state);
-mine2.mark();
-console.log(mine2.state);
-mine2.shot();
+var mine = Create2DArray(100);
 
-const mine3 = new Mine(13, 59, false);
+for (let i = 0; i <= 2; i++) {
+  const row = 59 + i;
 
-mines.push(mine1, mine2, mine3);
+  for (let y = 1; y <= 50; y++) {
+    const column = y;
+    const isMine = Math.random() < 0.05;
+
+    console.log(row, column, isMine);
+
+    mine[row][column] = new Mine(row, column, isMine);
+  }
+}
+
+console.log(mine[59][12].state);
+
+//press coord on map
+mine[59][12].mark();
 
 document.getElementById("map").addEventListener("click", mapClick);
 
@@ -50,9 +59,18 @@ function mapClick(event) {
   // loop through all mines to see if the x,y is touching the mine's x,y
   // for (let i = 0; i < mines.length; i++) {
   //   const mine = mines[i];
+  //   if (mine.)
 
   //   mine.isTouching(x, y, )
 }
+
+//press fire-button
+// mine601.shot();
+
+//win-condition?
+// if (mine1.isMine && mine1.x < 200) {
+//   console.log("You lost!");
+// }
 
 document.getElementById("booklet").addEventListener("click", bookClick);
 

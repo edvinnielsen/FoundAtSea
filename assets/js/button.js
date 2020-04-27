@@ -52,10 +52,10 @@ class Button {
   stateClick = () => {
     this._press = 2;
     this.tick();
-    if (counter.torpedos > 0) {
-      counter.torpedos--;
-      counter.tick();
-    }
+    // if (counter.torpedos > 0) {
+    //   counter.torpedos--;
+    //   counter.tick();
+    // }
   };
 
   tick() {
