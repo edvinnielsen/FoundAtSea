@@ -38,6 +38,7 @@ class Mine {
           },
           onShot: function () {
             console.log("I am hit");
+            this.hit();
           },
         },
       });
@@ -60,6 +61,7 @@ class Mine {
           },
           onShot: function () {
             console.log("I am missed");
+            this.miss();
           },
         },
       });
@@ -87,5 +89,41 @@ class Mine {
     // console.log("hiding mark");
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     map._draw();
+  }
+
+  hit() {
+    console.log("animate explosion")
+    const temp = getIndexOfMine(mine, this);
+
+    // console.log(temp);
+
+    // console.log(temp[0]);
+    // console.log(temp[1]);
+
+    const column = -10 + 70 * temp[1];
+    const row = 90 + 60 * (-1 * (-61 + temp[0]));
+
+    this.ctx.beginPath();
+    this.ctx.rect(column, row, 20, 20);
+    this.ctx.strokeStyle = "green";
+    this.ctx.stroke();
+  }
+
+  miss() {
+    console.log("animate miss");
+    const temp = getIndexOfMine(mine, this);
+
+    // console.log(temp);
+
+    // console.log(temp[0]);
+    // console.log(temp[1]);
+
+    const column = -10 + 70 * temp[1];
+    const row = 90 + 60 * (-1 * (-61 + temp[0]));
+
+    this.ctx.beginPath();
+    this.ctx.rect(column, row, 20, 20);
+    this.ctx.strokeStyle = "yellow";
+    this.ctx.stroke();
   }
 }

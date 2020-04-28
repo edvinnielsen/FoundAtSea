@@ -62,7 +62,6 @@ function mapClick(event) {
         }
         console.log(getIndexOfMine(mine, activeMine));
         activeMine.mark();
-        console.log(activeMine.isMine);
         break loop1;
       }
     }
@@ -107,10 +106,12 @@ function init() {
 
   document.getElementById("button").addEventListener("mousedown", () => {
     button.stateClick();
-    counter.oneDown();
-
-    console.log(activeMine);
-    activeMine.shot();
+    if (counter.torpedos > 0) {
+      counter.torpedos--;
+      counter.tick();
+      console.log(activeMine);
+      activeMine.onShot();
+    }
   });
 
   document
