@@ -16,7 +16,7 @@ class Map {
     for (let y = 0; y < this.canvas.width; y += 70) {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
-      this.ctx.font = "50px Glasstown NBP";
+      this.ctx.font = "50px 'Glasstown NBP'";
       this.ctx.fillStyle = "#c40000";
       this.ctx.textAlign = "center";
       let i = y / 70;

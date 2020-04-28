@@ -2,13 +2,6 @@ let mapSpeed = 3000;
 
 const book = new Book();
 
-const button = new Button();
-document.getElementById("button").addEventListener("mousedown", () => {
-  button.stateClick();
-  counter.oneDown();
-});
-document.getElementById("button").addEventListener("mouseup", button.stateRest);
-
 const light = new Light();
 
 const counter = new Count();
@@ -35,31 +28,16 @@ function getIndexOfMine(arr, k) {
 
 var mine = Create2DArray(100);
 
-for (let i = 0; i <= 2; i++) {
-  const row = 59 + i;
-
-  for (let y = 1; y <= 50; y++) {
-    const column = y;
-    const isMine = Math.random() < 0.05;
-
-    // console.log(row, column, isMine);
-
-    mine[row][column] = new Mine(row, column, isMine);
-  }
-}
-
-document.getElementById("map").addEventListener("click", mapClick);
+let activeMine;
 
 function mapClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
 
   // loop through all mines to see if the x,y is touching the mine's x,y
-  for (let i = 0; i <= 2; i++) {
-    const row = 59 + i;
-    for (let g = 1; g <= 50; g++) {
-      const column = g;
-      const checkMine = mine[row][column];
+  loop1: for (let row = 59; row <= 61; row++) {
+    for (let column = 1; column <= 50; column++) {
+      activeMine = mine[row][column];
       rowCord = 10 + 90 + 60 * (-1 * (-61 + row));
       colCord = 10 - 10 + 70 * column;
 
@@ -69,41 +47,34 @@ function mapClick(event) {
         colCord - 20 < x &&
         x < colCord + 20
       ) {
-        let remove;
-        for1: for (let i = 0; i <= 2; i++) {
-          const row = 59 + i;
-          for (let g = 1; g <= 50; g++) {
-            const column = g;
-            remove = mine[row][column];
-            if (remove.state == "marked") {
-              console.log(getIndexOfMine(mine, remove));
-              remove.unmark();
-              if (checkMine == remove) {
+        let removeMine;
+        for (let row = 59; row <= 61; row++) {
+          for (let column = 1; column <= 50; column++) {
+            removeMine = mine[row][column];
+            if (removeMine.state == "marked") {
+              console.log(getIndexOfMine(mine, removeMine));
+              removeMine.unmark();
+              if (activeMine == removeMine) {
                 break if1;
               }
             }
           }
         }
-        console.log(getIndexOfMine(mine, checkMine));
-        checkMine.mark();
-
-        // if (getIndexOfMine(mine, checkMine) != getIndexOfMine(mine, remove)) {
-        //   console.log(getIndexOfMine(mine, checkMine));
-        //   checkMine.mark();
+        console.log(getIndexOfMine(mine, activeMine));
+        activeMine.mark();
+        console.log(activeMine.isMine);
+        break loop1;
       }
     }
   }
 }
 
-//press fire-button
-// mine601.shot();
+// console.log(activeMine.isMine);
 
 //win-condition?
 // if (mine1.isMine && mine1.x < 200) {
 //   console.log("You lost!");
 // }
-
-document.getElementById("booklet").addEventListener("click", bookClick);
 
 function bookClick(event) {
   const x = event.offsetX;
@@ -117,3 +88,36 @@ function bookClick(event) {
 
   book.tick();
 }
+
+const button = new Button();
+
+function init() {
+  console.warn(`Font Loaded`);
+  for (let row = 59; row <= 61; row++) {
+    for (let column = 1; column <= 50; column++) {
+      const isMine = Math.random() < 0.5;
+      // const isMine = false;
+      console.log(row, column, isMine);
+
+      mine[row][column] = new Mine(row, column, isMine);
+    }
+  }
+
+  document.getElementById("map").addEventListener("click", mapClick);
+
+  document.getElementById("button").addEventListener("mousedown", () => {
+    button.stateClick();
+    counter.oneDown();
+
+    console.log(activeMine);
+    activeMine.shot();
+  });
+
+  document
+    .getElementById("button")
+    .addEventListener("mouseup", button.stateRest);
+}
+
+console.warn(`Loading Font`);
+
+document.fonts.load("10pt 'Glasstown NBP'").then(init);

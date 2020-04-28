@@ -1,7 +1,6 @@
 class Mine {
   canvas;
   ctx;
-  left = 0;
 
   //59, 60 or 61
   row;
@@ -10,15 +9,17 @@ class Mine {
   column;
 
   //true or false
-  isMine;
+  isMine = false;
 
   constructor(row, column, isMine) {
     this.canvas = document.querySelector(".map");
     this.ctx = this.canvas.getContext("2d");
 
-    //translate coord from r/c to px
+    this.row = row;
+    this.column = column;
+    this.isMine = isMine;
 
-    if (isMine) {
+    if (this.isMine) {
       StateMachine.apply(this, {
         init: "hidden",
         transitions: [
@@ -28,7 +29,7 @@ class Mine {
         ],
         methods: {
           onMark: function () {
-            console.log("I am marked");
+            console.log("I am a marked mine");
             this.showMark();
           },
           onUnmark: function () {
@@ -50,7 +51,7 @@ class Mine {
         ],
         methods: {
           onMark: function () {
-            console.log("I am marked");
+            console.log("I am a marked blank");
             this.showMark();
           },
           onUnmark: function () {

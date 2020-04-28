@@ -19,7 +19,7 @@ class Count {
 
   _draw() {
     this.ctx.beginPath();
-    this.ctx.font = "220px Glasstown NBP";
+    this.ctx.font = "220px 'Glasstown NBP'";
 
     this.ctx.fillStyle = "#c40000";
     this.ctx.textAlign = "center";
