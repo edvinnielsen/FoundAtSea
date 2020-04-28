@@ -63,14 +63,14 @@ function mapClick(event) {
       rowCord = 10 + 90 + 60 * (-1 * (-61 + row));
       colCord = 10 - 10 + 70 * column;
 
-      if (
+      if1: if (
         rowCord - 20 < y &&
         y < rowCord + 20 &&
         colCord - 20 < x &&
         x < colCord + 20
       ) {
         let remove;
-        for (let i = 0; i <= 2; i++) {
+        for1: for (let i = 0; i <= 2; i++) {
           const row = 59 + i;
           for (let g = 1; g <= 50; g++) {
             const column = g;
@@ -78,15 +78,18 @@ function mapClick(event) {
             if (remove.state == "marked") {
               console.log(getIndexOfMine(mine, remove));
               remove.unmark();
-              break;
+              if (checkMine == remove) {
+                break if1;
+              }
             }
           }
         }
-        if (remove != checkMine) {
-          console.log(getIndexOfMine(mine, checkMine));
-          checkMine.mark();
-          break;
-        }
+        console.log(getIndexOfMine(mine, checkMine));
+        checkMine.mark();
+
+        // if (getIndexOfMine(mine, checkMine) != getIndexOfMine(mine, remove)) {
+        //   console.log(getIndexOfMine(mine, checkMine));
+        //   checkMine.mark();
       }
     }
   }
