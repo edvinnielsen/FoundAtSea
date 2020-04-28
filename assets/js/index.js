@@ -21,10 +21,17 @@ function Create2DArray(rows) {
   for (var i = 0; i < rows; i++) {
     arr[i] = [];
   }
-
   return arr;
 }
 
+function getIndexOfMine(arr, k) {
+  for (var i = 0; i < arr.length; i++) {
+    var index = arr[i].indexOf(k);
+    if (index > -1) {
+      return [i, index];
+    }
+  }
+}
 var mine = Create2DArray(100);
 
 for (let i = 0; i <= 2; i++) {
@@ -34,34 +41,56 @@ for (let i = 0; i <= 2; i++) {
     const column = y;
     const isMine = Math.random() < 0.05;
 
-    console.log(row, column, isMine);
+    // console.log(row, column, isMine);
 
     mine[row][column] = new Mine(row, column, isMine);
+
+    newMine = mine[row][column];
   }
 }
 
-console.log(mine[59][12].state);
+// console.log(mine[59][12].state);
 
 //press coord on map
-mine[59][12].mark();
+// mine[59][12].mark();
 
 document.getElementById("map").addEventListener("click", mapClick);
 
 function mapClick(event) {
-  console.log(event.offsetX, event.offsetY);
-
-  //switch to
-  // const x = event.offsetX;
-  // const y = event.offsetY;
-  const x = event.x;
-  const y = event.y;
+  const x = event.offsetX;
+  const y = event.offsetY;
 
   // loop through all mines to see if the x,y is touching the mine's x,y
-  // for (let i = 0; i < mines.length; i++) {
-  //   const mine = mines[i];
-  //   if (mine.)
+  for (let i = 0; i <= 2; i++) {
+    const row = 59 + i;
+    for (let g = 1; g <= 50; g++) {
+      const column = g;
+      const checkMine = mine[row][column];
+      rowCord = 10 + 90 + 60 * (-1 * (-61 + row));
+      colCord = 10 - 10 + 70 * column;
 
-  //   mine.isTouching(x, y, )
+      if (
+        rowCord - 20 < y &&
+        y < rowCord + 20 &&
+        colCord - 20 < x &&
+        x < colCord + 20
+      ) {
+        for (let i = 0; i <= 2; i++) {
+          const row = 59 + i;
+          for (let g = 1; g <= 50; g++) {
+            const column = g;
+            const remove = mine[row][column];
+            if (remove.state == "marked") {
+              console.log(getIndexOfMine(mine, remove));
+              remove.unmark();
+            }
+          }
+        }
+        console.log(getIndexOfMine(mine, checkMine));
+        checkMine.mark();
+      }
+    }
+  }
 }
 
 //press fire-button
@@ -80,9 +109,9 @@ function bookClick(event) {
 
   if (x < 480) {
     book.switchPageDown();
-    book.tick();
   } else {
     book.switchPageUp();
-    book.tick();
   }
+
+  book.tick();
 }

@@ -16,7 +16,7 @@ class Mine {
     this.canvas = document.querySelector(".map");
     this.ctx = this.canvas.getContext("2d");
 
-    //translate coord
+    //translate coord from r/c to px
     column = -10 + 70 * column;
     row = 90 + 60 * (-1 * (-61 + row));
 
