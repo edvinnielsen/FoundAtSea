@@ -17,13 +17,6 @@ class Mine {
     this.ctx = this.canvas.getContext("2d");
 
     //translate coord from r/c to px
-    column = -10 + 70 * column;
-    row = 90 + 60 * (-1 * (-61 + row));
-
-    this.ctx.beginPath();
-    this.ctx.rect(column, row, 20, 20);
-    this.ctx.strokeStyle = "red";
-    this.ctx.stroke();
 
     if (isMine) {
       StateMachine.apply(this, {
@@ -36,9 +29,11 @@ class Mine {
         methods: {
           onMark: function () {
             console.log("I am marked");
+            this.showMark();
           },
           onUnmark: function () {
             console.log("I am unmarked");
+            this.hideMark();
           },
           onShot: function () {
             console.log("I am hit");
@@ -56,9 +51,11 @@ class Mine {
         methods: {
           onMark: function () {
             console.log("I am marked");
+            this.showMark();
           },
           onUnmark: function () {
             console.log("I am unmarked");
+            this.hideMark();
           },
           onShot: function () {
             console.log("I am missed");
@@ -68,9 +65,26 @@ class Mine {
     }
   }
 
-  // tick() {
-  //   this.left -= 10;
-  //   this.canvas.style.marginLeft = `${this.left}px`;
-  //   setTimeout(() => {this.tick();}, mapSpeed);
-  // }
+  showMark() {
+    const temp = getIndexOfMine(mine, this);
+
+    console.log(temp);
+
+    console.log(temp[0]);
+    console.log(temp[1]);
+
+    const column = -10 + 70 * temp[1];
+    const row = 90 + 60 * (-1 * (-61 + temp[0]));
+
+    this.ctx.beginPath();
+    this.ctx.rect(column, row, 20, 20);
+    this.ctx.strokeStyle = "red";
+    this.ctx.stroke();
+  }
+
+  hideMark() {
+    console.log("hiding mark");
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    map._draw();
+  }
 }
