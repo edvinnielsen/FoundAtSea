@@ -32,6 +32,7 @@ function getIndexOfMine(arr, k) {
     }
   }
 }
+
 var mine = Create2DArray(100);
 
 for (let i = 0; i <= 2; i++) {
@@ -44,15 +45,8 @@ for (let i = 0; i <= 2; i++) {
     // console.log(row, column, isMine);
 
     mine[row][column] = new Mine(row, column, isMine);
-
-    newMine = mine[row][column];
   }
 }
-
-// console.log(mine[59][12].state);
-
-//press coord on map
-// mine[59][12].mark();
 
 document.getElementById("map").addEventListener("click", mapClick);
 
@@ -75,19 +69,24 @@ function mapClick(event) {
         colCord - 20 < x &&
         x < colCord + 20
       ) {
+        let remove;
         for (let i = 0; i <= 2; i++) {
           const row = 59 + i;
           for (let g = 1; g <= 50; g++) {
             const column = g;
-            const remove = mine[row][column];
+            remove = mine[row][column];
             if (remove.state == "marked") {
               console.log(getIndexOfMine(mine, remove));
               remove.unmark();
+              break;
             }
           }
         }
-        console.log(getIndexOfMine(mine, checkMine));
-        checkMine.mark();
+        if (remove != checkMine) {
+          console.log(getIndexOfMine(mine, checkMine));
+          checkMine.mark();
+          break;
+        }
       }
     }
   }
