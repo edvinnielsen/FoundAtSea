@@ -1,6 +1,7 @@
 class Mine {
   canvas;
   ctx;
+  left;
 
   //59, 60 or 61
   row;
@@ -103,6 +104,7 @@ class Mine {
     // console.log(temp[0]);
     // console.log(temp[1]);
 
+
     const column = -10 + 70 * temp[1];
     const row = 90 + 60 * (-1 * (-61 + temp[0]));
 
@@ -111,18 +113,20 @@ class Mine {
     this.ctx.strokeStyle = "green";
     this.ctx.stroke();
 
-    console.log("make explosion visable");
-    this.expImage.style.width = `150px`;
-    this.expImage.style.top = `${row - 50}px`;
-    this.expImage.style.left = `${column - 100}px`;
-    this.expImage.style.visibility = "visible";
+    // console.log("make explosion visable");
+    // this.expImage.style.width = `150px`;
 
-    setTimeout(() => {
-      this.expImage.style.visibility = `hidden`;
-    }, 1000);
+    // this.expImage.style.top = `${row}px`;
+    // this.expImage.style.left = `${column}px`;
+    // this.expImage.style.visibility = "visible";
+
+    // setTimeout(() => {
+    //   this.expImage.style.visibility = `hidden`;
+    // }, 1000);
   }
 
   miss() {
+
     console.log("animate miss");
     const temp = getIndexOfMine(mine, this);
 
