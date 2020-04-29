@@ -39,5 +39,8 @@ class Map {
     setTimeout(() => {
       this.tick();
     }, mapSpeed);
+
+    //for-loop all mines see if (isMine) not (shot) 
+
   }
 }

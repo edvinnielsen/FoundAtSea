@@ -123,6 +123,10 @@ class Mine {
     // setTimeout(() => {
     //   this.expImage.style.visibility = `hidden`;
     // }, 1000);
+
+    //win
+    // if()
+
   }
 
   miss() {

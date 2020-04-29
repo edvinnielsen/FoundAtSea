@@ -102,6 +102,8 @@ function init() {
       //console.log(row, column, isMine);
 
       mine[row][column] = new Mine(row, column, isMine);
+
+      
     }
   }
 
