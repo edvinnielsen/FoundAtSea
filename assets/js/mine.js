@@ -92,7 +92,6 @@ class Mine {
   }
 
   hit() {
-    console.log("animate explosion")
     const temp = getIndexOfMine(mine, this);
 
     // console.log(temp);
@@ -107,6 +106,12 @@ class Mine {
     this.ctx.rect(column, row, 20, 20);
     this.ctx.strokeStyle = "green";
     this.ctx.stroke();
+
+
+    console.log("make explosion visable");
+    document.getElementById("exp").visibility = "visible";
+
+
   }
 
   miss() {

@@ -21,7 +21,7 @@
   position: absolute;
   left: 200px;
   top: 468px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .display {
@@ -60,4 +60,10 @@
   top: 605px;
   overflow: hidden;
   width: 1605px;
+}
+
+.exp {
+  left: 20px;
+  top: 20px;
+  visibility: hidden;
 }

@@ -75,6 +75,8 @@ function mapClick(event) {
 //   console.log("You lost!");
 // }
 
+document.getElementById("booklet").addEventListener("click", bookClick);
+
 function bookClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -110,7 +112,7 @@ function init() {
       counter.torpedos--;
       counter.tick();
       console.log(activeMine);
-      activeMine.onShot();
+      activeMine.shot();
     }
   });
 
