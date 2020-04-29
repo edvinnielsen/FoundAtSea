@@ -11,6 +11,8 @@ class Mine {
   //true or false
   isMine = false;
 
+  expImage;
+
   constructor(row, column, isMine) {
     this.canvas = document.querySelector(".map");
     this.ctx = this.canvas.getContext("2d");
@@ -18,6 +20,8 @@ class Mine {
     this.row = row;
     this.column = column;
     this.isMine = isMine;
+
+    this.expImage = document.querySelector("#exp");
 
     if (this.isMine) {
       StateMachine.apply(this, {
@@ -107,11 +111,15 @@ class Mine {
     this.ctx.strokeStyle = "green";
     this.ctx.stroke();
 
-
     console.log("make explosion visable");
-    document.getElementById("exp").visibility = "visible";
+    this.expImage.style.width = `150px`;
+    this.expImage.style.top = `${row - 50}px`;
+    this.expImage.style.left = `${column - 100}px`;
+    this.expImage.style.visibility = "visible";
 
-
+    setTimeout(() => {
+      this.expImage.style.visibility = `hidden`;
+    }, 1000);
   }
 
   miss() {

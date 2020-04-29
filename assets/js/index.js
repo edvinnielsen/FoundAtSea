@@ -8,6 +8,9 @@ const counter = new Count();
 
 const map = new Map();
 
+const buttonElement = document.querySelector("#button");
+const mapElement = document.querySelector("#map");
+
 function Create2DArray(rows) {
   var arr = [];
 
@@ -68,8 +71,6 @@ function mapClick(event) {
   }
 }
 
-// console.log(activeMine.isMine);
-
 //win-condition?
 // if (mine1.isMine && mine1.x < 200) {
 //   console.log("You lost!");
@@ -98,27 +99,32 @@ function init() {
     for (let column = 1; column <= 50; column++) {
       const isMine = Math.random() < 0.5;
       // const isMine = false;
-      console.log(row, column, isMine);
+      //console.log(row, column, isMine);
 
       mine[row][column] = new Mine(row, column, isMine);
     }
   }
 
-  document.getElementById("map").addEventListener("click", mapClick);
+  mapElement.addEventListener("click", mapClick);
 
-  document.getElementById("button").addEventListener("mousedown", () => {
+  buttonElement.addEventListener("mousedown", (event) => {
+    if (activeMine === undefined) {
+      return;
+    }
+
     button.stateClick();
     if (counter.torpedos > 0) {
       counter.torpedos--;
       counter.tick();
-      console.log(activeMine);
+      //console.log(activeMine);
       activeMine.shot();
+
+      // Unset activeMine
+      activeMine = undefined;
     }
   });
 
-  document
-    .getElementById("button")
-    .addEventListener("mouseup", button.stateRest);
+  buttonElement.addEventListener("mouseup", button.stateRest);
 }
 
 console.warn(`Loading Font`);

@@ -12,7 +12,6 @@
 
     <img id="dash" class="dash" src="./assets/img/dash.png" alt="" />
     <img id="sub" class="sub" src="./assets/img/sub.gif" alt="" />
-    <img id="exp" class="exp" src="./assets/img/exp.gif" alt="" />
 
     <canvas id="display" class="display" width="450" height="260"></canvas>
     <canvas id="count" class="count" width="190" height="215"></canvas>
@@ -21,8 +20,10 @@
     <canvas id="light" class="light" width="120" height="120"></canvas>
 
     <div class="mapwrapper">
-    <canvas id="map" class="map" width="4815" height="370"></canvas>
-
+      <canvas id="map" class="map" width="4815" height="370"></canvas>
+      <div class="hidden">
+        <img id="exp" class="exp" src="./assets/img/exp.gif" alt="" />
+      </div>
     </div>
 
     <script src="./assets/js/state-machine.js"></script>
@@ -34,6 +35,5 @@
     <script src="./assets/js/map.js"></script>
     <script src="./assets/js/mine.js"></script>
     <script src="./assets/js/index.js" defer></script>
-
   </body>
 </html>

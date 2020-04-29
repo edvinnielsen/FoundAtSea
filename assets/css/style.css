@@ -11,6 +11,10 @@
   font-style: normal;
 }
 
+.hidden {
+  /* display: none; */
+}
+
 .dash {
   position: absolute;
   left: 0;
@@ -40,6 +44,7 @@
   position: absolute;
   left: 667px;
   top: 328px;
+  cursor: pointer;
 }
 
 .booklet {
@@ -62,8 +67,16 @@
   width: 1605px;
 }
 
+.map {
+  cursor: pointer;
+}
+
 .exp {
+  position: absolute;
+  z-index: 9999;
+  /* position: absolute;
+  z-index: 999;
   left: 20px;
   top: 20px;
-  visibility: hidden;
+  width: 100px; */
 }
