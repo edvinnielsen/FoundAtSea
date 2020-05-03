@@ -3,14 +3,14 @@
   border: 1px solid #ccc;
 } */
 
-
+/*
 @font-face {
   font-family: "Glasstown NBP";
   src: url("../fonts/glasstownnbpregular-rymm-webfont.woff2") format("woff2"),
     url("../fonts/glasstownnbpregular-rymm-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
-}
+} */
 
 .hidden {
   /* display: none; */
@@ -52,6 +52,7 @@
   position: absolute;
   left: 910px;
   top: 30px;
+  cursor: pointer;
 }
 
 .light {

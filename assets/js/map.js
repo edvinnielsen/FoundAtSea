@@ -13,6 +13,7 @@ class Map {
 
   _draw() {
     this.ctx.beginPath();
+    // this.ctx.globalCompositeOperation = "destination-under";
     for (let y = 0; y < this.canvas.width; y += 70) {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
@@ -40,7 +41,6 @@ class Map {
       this.tick();
     }, mapSpeed);
 
-    //for-loop all mines see if (isMine) not (shot) 
-
+    //for-loop all mines see if (isMine) not (shot)
   }
 }

@@ -1,4 +1,6 @@
 let mapSpeed = 3000;
+const firstColumn = 10;
+const lastColumn = 20;
 
 const book = new Book();
 
@@ -39,7 +41,7 @@ function mapClick(event) {
 
   // loop through all mines to see if the x,y is touching the mine's x,y
   loop1: for (let row = 59; row <= 61; row++) {
-    for (let column = 1; column <= 50; column++) {
+    for (let column = firstColumn; column <= lastColumn; column++) {
       activeMine = mine[row][column];
       rowCord = 10 + 90 + 60 * (-1 * (-61 + row));
       colCord = 10 - 10 + 70 * column;
@@ -52,7 +54,7 @@ function mapClick(event) {
       ) {
         let removeMine;
         for (let row = 59; row <= 61; row++) {
-          for (let column = 1; column <= 50; column++) {
+          for (let column = firstColumn; column <= lastColumn; column++) {
             removeMine = mine[row][column];
             if (removeMine.state == "marked") {
               console.log(getIndexOfMine(mine, removeMine));
@@ -61,11 +63,17 @@ function mapClick(event) {
                 break if1;
               }
             }
+            // if (removeMine.state == "exploded") {
+            //   console.log("already shot");
+            //   break if1;
+            // }
           }
         }
         console.log(getIndexOfMine(mine, activeMine));
-        activeMine.mark();
-        break loop1;
+        if (activeMine != undefined) {
+          activeMine.mark();
+          break loop1;
+        }
       }
     }
   }
@@ -96,14 +104,14 @@ const button = new Button();
 function init() {
   console.warn(`Font Loaded`);
   for (let row = 59; row <= 61; row++) {
-    for (let column = 1; column <= 50; column++) {
-      const isMine = Math.random() < 0.5;
-      // const isMine = false;
-      //console.log(row, column, isMine);
+    for (let column = firstColumn; column <= lastColumn; column++) {
+      const isMine = Math.random() < 0.08;
 
       mine[row][column] = new Mine(row, column, isMine);
 
-      
+      if (isMine) {
+        console.log(row, column);
+      }
     }
   }
 
@@ -118,7 +126,6 @@ function init() {
     if (counter.torpedos > 0) {
       counter.torpedos--;
       counter.tick();
-      //console.log(activeMine);
       activeMine.shot();
 
       // Unset activeMine
@@ -129,6 +136,6 @@ function init() {
   buttonElement.addEventListener("mouseup", button.stateRest);
 }
 
-console.warn(`Loading Font`);
+// console.warn(`Loading Font`);
 
 document.fonts.load("10pt 'Glasstown NBP'").then(init);

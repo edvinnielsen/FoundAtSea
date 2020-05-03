@@ -3,6 +3,9 @@ class Mine {
   ctx;
   left;
 
+  // firstColumn = 10;
+  // lastColumn = 25;
+
   //59, 60 or 61
   row;
 
@@ -91,12 +94,6 @@ class Mine {
   }
 
   hideMark() {
-    // console.log("hiding mark");
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    map._draw();
-  }
-
-  hit() {
     const temp = getIndexOfMine(mine, this);
 
     // console.log(temp);
@@ -104,6 +101,22 @@ class Mine {
     // console.log(temp[0]);
     // console.log(temp[1]);
 
+    const column = -10 + 70 * temp[1];
+    const row = 90 + 60 * (-1 * (-61 + temp[0]));
+
+    // console.log("hiding mark");
+    this.ctx.clearRect(column - 5, row - 5, 30, 30);
+
+    activeMine = undefined;
+
+    map._draw();
+  }
+
+  hit() {
+    const temp = getIndexOfMine(mine, this);
+
+    // console.log(temp[0]);
+    // console.log(temp[1]);
 
     const column = -10 + 70 * temp[1];
     const row = 90 + 60 * (-1 * (-61 + temp[0]));
@@ -125,12 +138,19 @@ class Mine {
     // }, 1000);
 
     //win
-    // if()
-
+    for (let row = 59; row <= 61; row++) {
+      for (let column = firstColumn; column <= lastColumn; column++) {
+        let tempMine = mine[row][column];
+        if (tempMine.state == "hidden" && tempMine.isMine) {
+          console.log("one more mine");
+          return;
+        }
+      }
+    }
+    console.log("you win½½");
   }
 
   miss() {
-
     console.log("animate miss");
     const temp = getIndexOfMine(mine, this);
 
@@ -146,5 +166,7 @@ class Mine {
     this.ctx.rect(column, row, 20, 20);
     this.ctx.strokeStyle = "yellow";
     this.ctx.stroke();
+
+    // delete mine[temp[0]][temp[1]];
   }
 }
