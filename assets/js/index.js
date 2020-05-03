@@ -10,6 +10,8 @@ const counter = new Count();
 
 const map = new Map();
 
+const display = new Display();
+
 const buttonElement = document.querySelector("#button");
 const mapElement = document.querySelector("#map");
 

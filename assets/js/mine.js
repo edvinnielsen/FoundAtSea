@@ -147,7 +147,8 @@ class Mine {
         }
       }
     }
-    console.log("you win½½");
+    console.log("you win!");
+    display.winner();
   }
 
   miss() {
