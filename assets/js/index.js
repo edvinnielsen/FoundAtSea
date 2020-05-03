@@ -15,6 +15,27 @@ const display = new Display();
 const buttonElement = document.querySelector("#button");
 const mapElement = document.querySelector("#map");
 
+//sound
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
+  this.stop = function () {
+    this.sound.pause();
+  };
+}
+
+let backMusic;
+backMusic = new sound("./assets/audio/menu.mp3");
+backMusic.play();
+backMusic.loop = true;
+
 function Create2DArray(rows) {
   var arr = [];
 
