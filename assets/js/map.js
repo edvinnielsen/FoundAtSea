@@ -5,8 +5,8 @@ class Map {
   y;
 
   constructor() {
-    this.canvas = document.querySelector('.map');
-    this.ctx = this.canvas.getContext('2d');
+    this.canvas = document.querySelector(".map");
+    this.ctx = this.canvas.getContext("2d");
     this._draw();
     this.tick();
   }
@@ -18,8 +18,8 @@ class Map {
       this.ctx.moveTo(y, 0);
       this.ctx.lineTo(y, 310);
       this.ctx.font = "50px 'Glasstown NBP'";
-      this.ctx.fillStyle = '#c40000';
-      this.ctx.textAlign = 'center';
+      this.ctx.fillStyle = "#c40000";
+      this.ctx.textAlign = "center";
       let i = y / 70;
       if (i <= 60) {
         this.ctx.fillText(i, y, 360);
@@ -30,7 +30,7 @@ class Map {
     }
 
     this.ctx.lineWidth = 6;
-    this.ctx.strokeStyle = '#10350C';
+    this.ctx.strokeStyle = "#10350C";
     this.ctx.stroke();
   }
 
@@ -40,7 +40,5 @@ class Map {
     timer = setTimeout(() => {
       this.tick();
     }, mapSpeed);
-
-    //for-loop all mines see if (isMine) not (shot)
   }
 }
