@@ -20,7 +20,6 @@ class Book {
 
   _loadImage() {
     this._image = new Image();
-
     this._image.onload = () => {
       this._draw();
     };
