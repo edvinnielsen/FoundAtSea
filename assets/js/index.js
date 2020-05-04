@@ -38,6 +38,12 @@ backMusic = new sound('./assets/audio/menu.mp3');
 backMusic.play();
 backMusic.loop = true;
 
+let selectSound;
+selectSound = new sound('./assets/audio/select.wav');
+
+let turnSound;
+turnSound = new sound('./assets/audio/turnpage.mp3');
+
 function Create2DArray(rows) {
   var arr = [];
 
@@ -84,6 +90,7 @@ function mapClick(event) {
             if (removeMine.state == 'marked') {
               console.log(getIndexOfMine(mine, removeMine));
               removeMine.unmark();
+              selectSound.play();
               if (activeMine == removeMine) {
                 break if1;
               }
@@ -97,6 +104,7 @@ function mapClick(event) {
         console.log(getIndexOfMine(mine, activeMine));
         if (activeMine != undefined) {
           activeMine.mark();
+          selectSound.play();
           break loop1;
         }
       }
