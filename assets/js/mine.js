@@ -18,57 +18,57 @@ class Mine {
   expImage;
 
   constructor(row, column, isMine) {
-    this.canvas = document.querySelector(".map");
-    this.ctx = this.canvas.getContext("2d");
+    this.canvas = document.querySelector('.map');
+    this.ctx = this.canvas.getContext('2d');
 
     this.row = row;
     this.column = column;
     this.isMine = isMine;
 
-    this.expImage = document.querySelector("#exp");
+    this.expImage = document.querySelector('#exp');
 
     if (this.isMine) {
       StateMachine.apply(this, {
-        init: "hidden",
+        init: 'hidden',
         transitions: [
-          { name: "mark", from: "hidden", to: "marked" },
-          { name: "unmark", from: "marked", to: "hidden" },
-          { name: "shot", from: "marked", to: "exploded" },
+          { name: 'mark', from: 'hidden', to: 'marked' },
+          { name: 'unmark', from: 'marked', to: 'hidden' },
+          { name: 'shot', from: 'marked', to: 'exploded' },
         ],
         methods: {
           onMark: function () {
-            console.log("I am a marked mine");
+            console.log('I am a marked mine');
             this.showMark();
           },
           onUnmark: function () {
-            console.log("I am unmarked");
+            console.log('I am unmarked');
             this.hideMark();
           },
           onShot: function () {
-            console.log("I am hit");
+            console.log('I am hit');
             this.hit();
           },
         },
       });
     } else {
       StateMachine.apply(this, {
-        init: "hidden",
+        init: 'hidden',
         transitions: [
-          { name: "mark", from: "hidden", to: "marked" },
-          { name: "unmark", from: "marked", to: "hidden" },
-          { name: "shot", from: "marked", to: "missed" },
+          { name: 'mark', from: 'hidden', to: 'marked' },
+          { name: 'unmark', from: 'marked', to: 'hidden' },
+          { name: 'shot', from: 'marked', to: 'missed' },
         ],
         methods: {
           onMark: function () {
-            console.log("I am a marked blank");
+            console.log('I am a marked blank');
             this.showMark();
           },
           onUnmark: function () {
-            console.log("I am unmarked");
+            console.log('I am unmarked');
             this.hideMark();
           },
           onShot: function () {
-            console.log("I am missed");
+            console.log('I am missed');
             this.miss();
           },
         },
@@ -89,7 +89,7 @@ class Mine {
 
     this.ctx.beginPath();
     this.ctx.rect(column, row, 20, 20);
-    this.ctx.strokeStyle = "red";
+    this.ctx.strokeStyle = 'red';
     this.ctx.stroke();
   }
 
@@ -123,7 +123,7 @@ class Mine {
 
     this.ctx.beginPath();
     this.ctx.rect(column, row, 20, 20);
-    this.ctx.strokeStyle = "green";
+    this.ctx.strokeStyle = 'green';
     this.ctx.stroke();
 
     // console.log("make explosion visable");
@@ -141,18 +141,19 @@ class Mine {
     for (let row = 59; row <= 61; row++) {
       for (let column = firstColumn; column <= lastColumn; column++) {
         let tempMine = mine[row][column];
-        if (tempMine.state == "hidden" && tempMine.isMine) {
-          console.log("one more mine");
+        if (tempMine.state == 'hidden' && tempMine.isMine) {
+          console.log('one more mine');
           return;
         }
       }
     }
-    console.log("you win!");
+    console.log('you win!');
+    clearTimeout(timer);
     display.winner();
   }
 
   miss() {
-    console.log("animate miss");
+    console.log('animate miss');
     const temp = getIndexOfMine(mine, this);
 
     // console.log(temp);
@@ -165,7 +166,7 @@ class Mine {
 
     this.ctx.beginPath();
     this.ctx.rect(column, row, 20, 20);
-    this.ctx.strokeStyle = "yellow";
+    this.ctx.strokeStyle = 'yellow';
     this.ctx.stroke();
 
     // delete mine[temp[0]][temp[1]];

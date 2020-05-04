@@ -2,6 +2,8 @@ let mapSpeed = 3000;
 const firstColumn = 10;
 const lastColumn = 20;
 
+let timer;
+
 const book = new Book();
 
 const light = new Light();
@@ -12,16 +14,16 @@ const map = new Map();
 
 const display = new Display();
 
-const buttonElement = document.querySelector("#button");
-const mapElement = document.querySelector("#map");
+const buttonElement = document.querySelector('#button');
+const mapElement = document.querySelector('#map');
 
 //sound
 function sound(src) {
-  this.sound = document.createElement("audio");
+  this.sound = document.createElement('audio');
   this.sound.src = src;
-  this.sound.setAttribute("preload", "auto");
-  this.sound.setAttribute("controls", "none");
-  this.sound.style.display = "none";
+  this.sound.setAttribute('preload', 'auto');
+  this.sound.setAttribute('controls', 'none');
+  this.sound.style.display = 'none';
   document.body.appendChild(this.sound);
   this.play = function () {
     this.sound.play();
@@ -32,7 +34,7 @@ function sound(src) {
 }
 
 let backMusic;
-backMusic = new sound("./assets/audio/menu.mp3");
+backMusic = new sound('./assets/audio/menu.mp3');
 backMusic.play();
 backMusic.loop = true;
 
@@ -79,7 +81,7 @@ function mapClick(event) {
         for (let row = 59; row <= 61; row++) {
           for (let column = firstColumn; column <= lastColumn; column++) {
             removeMine = mine[row][column];
-            if (removeMine.state == "marked") {
+            if (removeMine.state == 'marked') {
               console.log(getIndexOfMine(mine, removeMine));
               removeMine.unmark();
               if (activeMine == removeMine) {
@@ -107,7 +109,7 @@ function mapClick(event) {
 //   console.log("You lost!");
 // }
 
-document.getElementById("booklet").addEventListener("click", bookClick);
+document.getElementById('booklet').addEventListener('click', bookClick);
 
 function bookClick(event) {
   const x = event.offsetX;
@@ -138,9 +140,9 @@ function init() {
     }
   }
 
-  mapElement.addEventListener("click", mapClick);
+  mapElement.addEventListener('click', mapClick);
 
-  buttonElement.addEventListener("mousedown", (event) => {
+  buttonElement.addEventListener('mousedown', (event) => {
     if (activeMine === undefined) {
       return;
     }
@@ -156,7 +158,7 @@ function init() {
     }
   });
 
-  buttonElement.addEventListener("mouseup", button.stateRest);
+  buttonElement.addEventListener('mouseup', button.stateRest);
 }
 
 // console.warn(`Loading Font`);
