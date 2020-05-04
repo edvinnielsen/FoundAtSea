@@ -1,21 +1,41 @@
-let mapSpeed = 3000;
+const mapSpeed = 3000;
 const firstColumn = 10;
 const lastColumn = 20;
+const isMineProb = 0.06;
 
-let timer;
+let timer, activeMine;
 
 const book = new Book();
-
 const light = new Light();
-
 const counter = new Count();
-
 const map = new Map();
-
 const display = new Display();
+const button = new Button();
 
 const buttonElement = document.querySelector('#button');
 const mapElement = document.querySelector('#map');
+
+let backMusic;
+backMusic = new sound('./assets/audio/menu.mp3');
+let selectSound;
+selectSound = new sound('./assets/audio/select.wav');
+let turnSound;
+turnSound = new sound('./assets/audio/turnpage.mp3');
+
+backMusic.play();
+backMusic.loop = true;
+
+//create mines
+var mine = Create2DArray(100);
+for (let row = 59; row <= 61; row++) {
+  for (let column = firstColumn; column <= lastColumn; column++) {
+    const isMine = Math.random() < isMineProb;
+    mine[row][column] = new Mine(row, column, isMine);
+    if (isMine) {
+      console.log(row, column);
+    }
+  }
+}
 
 //sound
 function sound(src) {
@@ -33,26 +53,16 @@ function sound(src) {
   };
 }
 
-let backMusic;
-backMusic = new sound('./assets/audio/menu.mp3');
-backMusic.play();
-backMusic.loop = true;
-
-let selectSound;
-selectSound = new sound('./assets/audio/select.wav');
-
-let turnSound;
-turnSound = new sound('./assets/audio/turnpage.mp3');
-
+//2D array
 function Create2DArray(rows) {
   var arr = [];
-
   for (var i = 0; i < rows; i++) {
     arr[i] = [];
   }
   return arr;
 }
 
+//get index of 2D array
 function getIndexOfMine(arr, k) {
   for (var i = 0; i < arr.length; i++) {
     var index = arr[i].indexOf(k);
@@ -62,10 +72,8 @@ function getIndexOfMine(arr, k) {
   }
 }
 
-var mine = Create2DArray(100);
-
-let activeMine;
-
+//Map-click
+mapElement.addEventListener('click', mapClick);
 function mapClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -112,63 +120,30 @@ function mapClick(event) {
   }
 }
 
-//win-condition?
-// if (mine1.isMine && mine1.x < 200) {
-//   console.log("You lost!");
-// }
-
+//Book-click
 document.getElementById('booklet').addEventListener('click', bookClick);
-
 function bookClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
-
   if (x < 480) {
     book.switchPageDown();
   } else {
     book.switchPageUp();
   }
-
   book.tick();
 }
 
-const button = new Button();
-
-function init() {
-  console.warn(`Font Loaded`);
-  for (let row = 59; row <= 61; row++) {
-    for (let column = firstColumn; column <= lastColumn; column++) {
-      const isMine = Math.random() < 0.08;
-
-      mine[row][column] = new Mine(row, column, isMine);
-
-      if (isMine) {
-        console.log(row, column);
-      }
-    }
+//Button-click
+buttonElement.addEventListener('mousedown', (event) => {
+  if (activeMine === undefined) {
+    return;
   }
-
-  mapElement.addEventListener('click', mapClick);
-
-  buttonElement.addEventListener('mousedown', (event) => {
-    if (activeMine === undefined) {
-      return;
-    }
-
-    button.stateClick();
-    if (counter.torpedos > 0) {
-      counter.torpedos--;
-      counter.tick();
-      activeMine.shot();
-
-      // Unset activeMine
-      activeMine = undefined;
-    }
-  });
-
-  buttonElement.addEventListener('mouseup', button.stateRest);
-}
-
-// console.warn(`Loading Font`);
-
-document.fonts.load("10pt 'Glasstown NBP'").then(init);
+  button.stateClick();
+  if (counter.torpedos > 0) {
+    counter.torpedos--;
+    counter.tick();
+    activeMine.shot();
+    activeMine = undefined;
+  }
+});
+buttonElement.addEventListener('mouseup', button.stateRest);
