@@ -49,19 +49,20 @@ class Book {
   }
 
   switchPageUp() {
-    console.log('switch');
     if (this._currentPage + 1 <= this._pageCount) {
       this._currentPage++;
+      let turnSound;
+      turnSound = new sound('./assets/audio/turnpage.mp3');
+      turnSound.play();
     }
-    console.log(this._currentPage);
   }
 
   switchPageDown() {
-
     if (this._currentPage - 1 >= 0) {
-      console.log('switch');
       this._currentPage--;
+      let turnSound;
+      turnSound = new sound('./assets/audio/turnpage.mp3');
+      turnSound.play();
     }
-    console.log(this._currentPage);
   }
 }
