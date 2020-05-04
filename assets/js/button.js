@@ -8,23 +8,21 @@ class Button {
   _press = 0;
 
   _image;
-  _imageLocation = './assets/img/button.png';
+  _imageLocation = "./assets/img/button.png";
   _spriteWidth = 192;
   _spriteHeight = 192;
 
   constructor() {
-    this.canvas = document.querySelector('.button');
-    this.ctx = this.canvas.getContext('2d');
+    this.canvas = document.querySelector(".button");
+    this.ctx = this.canvas.getContext("2d");
     this._loadImage();
   }
 
   _loadImage() {
     this._image = new Image();
-
     this._image.onload = () => {
       this._draw();
     };
-
     this._image.src = this._imageLocation;
   }
   _draw() {
@@ -53,7 +51,7 @@ class Button {
     this._press = 2;
     this.tick();
     let clickSound;
-    clickSound = new sound('./assets/audio/click.mp3');
+    clickSound = new sound("./assets/audio/click.mp3");
     clickSound.play();
   };
 
