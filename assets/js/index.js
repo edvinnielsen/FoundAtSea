@@ -12,38 +12,41 @@ const map = new Map();
 const display = new Display();
 const button = new Button();
 
-const buttonElement = document.querySelector('#button');
-const mapElement = document.querySelector('#map');
+const buttonElement = document.querySelector("#button");
+const mapElement = document.querySelector("#map");
 
 let backMusic;
-backMusic = new sound('./assets/audio/menu.mp3');
+backMusic = new sound("./assets/audio/menu.mp3");
 let selectSound;
-selectSound = new sound('./assets/audio/select.wav');
+selectSound = new sound("./assets/audio/select.wav");
 let turnSound;
-turnSound = new sound('./assets/audio/turnpage.mp3');
+turnSound = new sound("./assets/audio/turnpage.mp3");
 
 backMusic.play();
 backMusic.loop = true;
 
 //create mines
 var mine = Create2DArray(100);
+let i = 0;
 for (let row = 59; row <= 61; row++) {
   for (let column = firstColumn; column <= lastColumn; column++) {
     const isMine = Math.random() < isMineProb;
     mine[row][column] = new Mine(row, column, isMine);
     if (isMine) {
+      i++;
       console.log(row, column);
+      display.mineAt(row, column, i);
     }
   }
 }
 
 //sound
 function sound(src) {
-  this.sound = document.createElement('audio');
+  this.sound = document.createElement("audio");
   this.sound.src = src;
-  this.sound.setAttribute('preload', 'auto');
-  this.sound.setAttribute('controls', 'none');
-  this.sound.style.display = 'none';
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
   document.body.appendChild(this.sound);
   this.play = function () {
     this.sound.play();
@@ -73,7 +76,7 @@ function getIndexOfMine(arr, k) {
 }
 
 //Map-click
-mapElement.addEventListener('click', mapClick);
+mapElement.addEventListener("click", mapClick);
 function mapClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -95,7 +98,7 @@ function mapClick(event) {
         for (let row = 59; row <= 61; row++) {
           for (let column = firstColumn; column <= lastColumn; column++) {
             removeMine = mine[row][column];
-            if (removeMine.state == 'marked') {
+            if (removeMine.state == "marked") {
               console.log(getIndexOfMine(mine, removeMine));
               removeMine.unmark();
               selectSound.play();
@@ -121,7 +124,7 @@ function mapClick(event) {
 }
 
 //Book-click
-document.getElementById('booklet').addEventListener('click', bookClick);
+document.getElementById("booklet").addEventListener("click", bookClick);
 function bookClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -134,7 +137,7 @@ function bookClick(event) {
 }
 
 //Button-click
-buttonElement.addEventListener('mousedown', (event) => {
+buttonElement.addEventListener("mousedown", (event) => {
   if (activeMine === undefined) {
     return;
   }
@@ -146,4 +149,4 @@ buttonElement.addEventListener('mousedown', (event) => {
     activeMine = undefined;
   }
 });
-buttonElement.addEventListener('mouseup', button.stateRest);
+buttonElement.addEventListener("mouseup", button.stateRest);
