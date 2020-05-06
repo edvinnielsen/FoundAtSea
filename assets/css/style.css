@@ -1,7 +1,17 @@
 /* TODO: Remove this. */
 /* canvas {
   border: 1px solid #ccc;
-} */
+}
+
+.intro {
+  display: none !important;
+}
+
+.game-area {
+  display: block !important;
+}
+
+*/
 
 /*
 @font-face {
@@ -11,9 +21,53 @@
   font-weight: normal;
   font-style: normal;
 } */
-
+/*
 .hidden {
-  /* display: none; */
+  display: none;
+} */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+body {
+  display: grid;
+
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.intro {
+  width: 1920px;
+  height: 1080px;
+  background-image: url("../img/start.png");
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+
+.start-btn {
+  font-size: 100px;
+  background-color: red;
+  border: 0;
+  border-radius: 60px;
+  padding-left: 55px;
+  padding-right: 55px;
+  line-height: 2;
+  color: white;
+  cursor: pointer;
+}
+
+.game-area {
+  position: relative;
+  display: none;
+  margin: 0 auto;
+  width: 1920px;
 }
 
 .dash {
@@ -43,7 +97,7 @@
 
 .button {
   position: absolute;
-  left: 667px;
+  left: 669px;
   top: 328px;
   cursor: pointer;
 }

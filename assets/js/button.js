@@ -51,7 +51,7 @@ class Button {
     this._press = 2;
     this.tick();
     let clickSound;
-    clickSound = new sound("./assets/audio/click.mp3");
+    clickSound = new Sound("./assets/audio/click.mp3");
     clickSound.play();
   };
 

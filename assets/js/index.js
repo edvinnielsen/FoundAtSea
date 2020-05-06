@@ -3,7 +3,8 @@ const firstColumn = 10;
 const lastColumn = 20;
 const isMineProb = 0.06;
 
-let timer, activeMine;
+let timer;
+let activeMine;
 
 const book = new Book();
 const light = new Light();
@@ -12,21 +13,22 @@ const map = new Map();
 const display = new Display();
 const button = new Button();
 
+// Intro Screen
+const $startBtn = document.querySelector(".start-btn");
+const $screenIntro = document.querySelector(".intro");
+
+// Game
+const $screenGame = document.querySelector(".game-area");
 const buttonElement = document.querySelector("#button");
-const mapElement = document.querySelector("#map");
+const $mapElement = document.querySelector("#map");
 
-let backMusic;
-backMusic = new sound("./assets/audio/menu.mp3");
-let selectSound;
-selectSound = new sound("./assets/audio/select.wav");
-let turnSound;
-turnSound = new sound("./assets/audio/turnpage.mp3");
+const backMusic = new Sound("./assets/audio/menu.mp3");
+const selectSound = new Sound("./assets/audio/select.wav");
+const turnSound = new Sound("./assets/audio/turnpage.mp3");
+const clickSound = new Sound("./assets/audio/click.mp3");
 
-backMusic.play();
-backMusic.loop = true;
-
-//create mines
-var mine = Create2DArray(100);
+// create mines
+const mine = Create2DArray(100);
 let i = 0;
 for (let row = 59; row <= 61; row++) {
   for (let column = firstColumn; column <= lastColumn; column++) {
@@ -40,43 +42,19 @@ for (let row = 59; row <= 61; row++) {
   }
 }
 
-//sound
-function sound(src) {
-  this.sound = document.createElement("audio");
-  this.sound.src = src;
-  this.sound.setAttribute("preload", "auto");
-  this.sound.setAttribute("controls", "none");
-  this.sound.style.display = "none";
-  document.body.appendChild(this.sound);
-  this.play = function () {
-    this.sound.play();
-  };
-  this.stop = function () {
-    this.sound.pause();
-  };
+// Start game button
+function startGame(event) {
+  toggleDisplay($screenIntro, $screenGame);
+
+  clickSound.play();
+  backMusic.play();
+  backMusic.loop = true;
+  map.start();
 }
 
-//2D array
-function Create2DArray(rows) {
-  var arr = [];
-  for (var i = 0; i < rows; i++) {
-    arr[i] = [];
-  }
-  return arr;
-}
-
-//get index of 2D array
-function getIndexOfMine(arr, k) {
-  for (var i = 0; i < arr.length; i++) {
-    var index = arr[i].indexOf(k);
-    if (index > -1) {
-      return [i, index];
-    }
-  }
-}
+$startBtn.addEventListener("click", startGame);
 
 //Map-click
-mapElement.addEventListener("click", mapClick);
 function mapClick(event) {
   const x = event.offsetX;
   const y = event.offsetY;
@@ -122,22 +100,25 @@ function mapClick(event) {
     }
   }
 }
+$mapElement.addEventListener("click", mapClick);
 
 //Book-click
-document.getElementById("booklet").addEventListener("click", bookClick);
 function bookClick(event) {
   const x = event.offsetX;
-  const y = event.offsetY;
+
   if (x < 480) {
     book.switchPageDown();
   } else {
     book.switchPageUp();
   }
+
   book.tick();
 }
+const $booklet = document.querySelector("#booklet");
+$booklet.addEventListener("click", bookClick);
 
 //Button-click
-buttonElement.addEventListener("mousedown", (event) => {
+function buttonDown(event) {
   if (activeMine === undefined) {
     return;
   }
@@ -148,5 +129,6 @@ buttonElement.addEventListener("mousedown", (event) => {
     activeMine.shot();
     activeMine = undefined;
   }
-});
+}
+buttonElement.addEventListener("mousedown", buttonDown());
 buttonElement.addEventListener("mouseup", button.stateRest);

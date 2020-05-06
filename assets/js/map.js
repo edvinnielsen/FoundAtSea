@@ -7,6 +7,9 @@ class Map {
   constructor() {
     this.canvas = document.querySelector(".map");
     this.ctx = this.canvas.getContext("2d");
+  }
+
+  start() {
     this._draw();
     this.tick();
   }

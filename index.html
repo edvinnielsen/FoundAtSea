@@ -8,27 +8,35 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <span style="font-family: 'Glasstown NBP';">&nbsp;</span>
+    <section class="intro">
+      <button class="start-btn">Begin</button>
+    </section>
 
-    <img id="dash" class="dash" src="./assets/img/dash.png" alt="" />
-    <img id="sub" class="sub" src="./assets/img/sub.gif" alt="" />
+    <section class="game-area">
+      <img id="dash" class="dash" src="./assets/img/dash.png" alt="" />
+      <img id="sub" class="sub" src="./assets/img/sub.gif" alt="" />
 
-    <canvas id="display" class="display" width="450" height="260"></canvas>
-    <canvas id="count" class="count" width="190" height="215"></canvas>
-    <canvas id="button" class="button" width="190" height="160"></canvas>
-    <canvas id="booklet" class="booklet" width="960" height="522"></canvas>
-    <canvas id="light" class="light" width="120" height="120"></canvas>
+      <canvas id="display" class="display" width="450" height="260"></canvas>
+      <canvas id="count" class="count" width="190" height="215"></canvas>
+      <canvas id="button" class="button" width="190" height="160"></canvas>
+      <canvas id="booklet" class="booklet" width="960" height="522"></canvas>
+      <canvas id="light" class="light" width="120" height="120"></canvas>
 
-    <div class="mapwrapper">
-      <canvas id="map" class="map" width="4815" height="370"></canvas>
-      <div class="hidden">
-        <img id="exp" class="exp" src="./assets/img/exp.gif" alt="" />
+      <div class="mapwrapper">
+        <canvas id="map" class="map" width="4815" height="370"></canvas>
+        <div class="hidden">
+          <img id="exp" class="exp" src="./assets/img/exp.gif" alt="" />
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- <img id="start" class="start" " onclick="init()" alt="" /> -->
 
     <script src="./assets/js/state-machine.js"></script>
 
+    <script src="./assets/js/utils.js"></script>
     <script src="./assets/js/button.js"></script>
+    <script src="./assets/js/sound.js"></script>
     <script src="./assets/js/book.js"></script>
     <script src="./assets/js/light.js"></script>
     <script src="./assets/js/count.js"></script>

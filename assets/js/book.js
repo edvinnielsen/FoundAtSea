@@ -6,14 +6,14 @@ class Book {
   _pageCount = 2;
 
   _image;
-  _imageLocation = './assets/img/book.png';
+  _imageLocation = "./assets/img/book.png";
   _spriteWidth = 160 * 6;
   _spriteHeight = 87 * 6;
   _sourceX = 0;
 
   constructor() {
-    this.canvas = document.querySelector('.booklet');
-    this.ctx = this.canvas.getContext('2d');
+    this.canvas = document.querySelector(".booklet");
+    this.ctx = this.canvas.getContext("2d");
 
     this._loadImage();
   }
@@ -50,8 +50,7 @@ class Book {
   switchPageUp() {
     if (this._currentPage + 1 <= this._pageCount) {
       this._currentPage++;
-      let turnSound;
-      turnSound = new sound('./assets/audio/turnpage.mp3');
+      // let turnSound = new Sound("./assets/audio/turnpage.mp3");
       turnSound.play();
     }
   }
@@ -59,8 +58,7 @@ class Book {
   switchPageDown() {
     if (this._currentPage - 1 >= 0) {
       this._currentPage--;
-      let turnSound;
-      turnSound = new sound('./assets/audio/turnpage.mp3');
+      // let turnSound = new Sound("./assets/audio/turnpage.mp3");
       turnSound.play();
     }
   }
