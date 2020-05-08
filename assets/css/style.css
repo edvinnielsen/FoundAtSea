@@ -52,14 +52,18 @@ body {
 }
 
 .start-btn {
-  font-size: 100px;
-  background-color: red;
+  position: absolute;
+  top: 930px;
+
+  font-family: "Birch STD";
+  font-size: 80px;
+  background-color: transparent;
   border: 0;
   border-radius: 60px;
   padding-left: 55px;
   padding-right: 55px;
   line-height: 2;
-  color: white;
+  color: rgb(211, 211, 211);
   cursor: pointer;
 }
 
