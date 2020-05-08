@@ -16,12 +16,9 @@ const button = new Button();
 // Intro Screen
 const $startBtn = document.querySelector(".start-btn");
 const $screenIntro = document.querySelector(".intro");
+const $screenGame = document.querySelector(".game-area");
 
 // Game
-const $screenGame = document.querySelector(".game-area");
-const buttonElement = document.querySelector("#button");
-const $mapElement = document.querySelector("#map");
-
 const backMusic = new Sound("./assets/audio/menu.mp3");
 const selectSound = new Sound("./assets/audio/select.wav");
 const turnSound = new Sound("./assets/audio/turnpage.mp3");
@@ -51,7 +48,6 @@ function startGame(event) {
   backMusic.loop = true;
   map.start();
 }
-
 $startBtn.addEventListener("click", startGame);
 
 //Map-click
@@ -100,6 +96,7 @@ function mapClick(event) {
     }
   }
 }
+const $mapElement = document.querySelector("#map");
 $mapElement.addEventListener("click", mapClick);
 
 //Book-click
@@ -114,11 +111,12 @@ function bookClick(event) {
 
   book.tick();
 }
-const $booklet = document.querySelector("#booklet");
-$booklet.addEventListener("click", bookClick);
+const $bookElement = document.querySelector("#booklet");
+$bookElement.addEventListener("click", bookClick);
 
 //Button-click
-function buttonDown(event) {
+function buttonClick(event) {
+  console.log(event);
   if (activeMine === undefined) {
     return;
   }
@@ -130,5 +128,6 @@ function buttonDown(event) {
     activeMine = undefined;
   }
 }
-buttonElement.addEventListener("mousedown", buttonDown());
-buttonElement.addEventListener("mouseup", button.stateRest);
+const $buttonElement = document.querySelector("#button");
+$buttonElement.addEventListener("mousedown", buttonClick);
+$screenGame.addEventListener("mouseup", button.stateRest);
