@@ -54,6 +54,7 @@ body {
 .start-btn {
   position: absolute;
   top: 930px;
+  left: center;
 
   font-family: "Birch STD";
   font-size: 80px;
